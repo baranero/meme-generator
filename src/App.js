@@ -1,13 +1,13 @@
 import './App.css';
 import Navbar from "./components/Navbar"
-import Input from "./components/Input"
-import Generator from "./components/Generator"
+import Meme from "./components/Meme"
+
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Input />
+      <Meme />
     </div>
   );
 }

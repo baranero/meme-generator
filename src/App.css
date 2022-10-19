@@ -48,3 +48,11 @@ body {
     background-color: rgb(207, 112, 112);
     border-radius: 5px;
 }
+
+.meme-cont {
+    padding: 20px;
+}
+
+.meme-img {
+    width: 100%;
+}
