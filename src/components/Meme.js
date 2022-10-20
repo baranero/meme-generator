@@ -14,13 +14,21 @@ export default function Meme() {
         let randomNumber = Math.floor(Math.random()*memesArray.length)
         console.log(memesArray[randomNumber].url);
         console.log(event.target.value);
-        setMeme(prevState => {
-            return {
+        console.log(allMemeImages);
+        setMeme(prevState => ({
             ...prevState,
-            randomImage: memesArray[randomNumber].url,
-            [event.target.name]: event.target.value,
-        }})
+            randomImage: memesArray[randomNumber].url
+        }))
         }
+
+        function handleChange(event) {
+            const {name, value} = event.target
+            setMeme(prevState => ({
+                ...prevState,
+                [name]: value
+            }))
+        }
+    
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -33,17 +41,17 @@ export default function Meme() {
                 <div className="input-text">
                     <input
                         name="topText"
-                        value={setMeme.topText}
+                        value={meme.topText}
                         placeholder="Top of meme"
                         className="input-input"
-                        onChange={generateMeme}
+                        onChange={handleChange}
                     />
                     <input
                         name="bottomText"
-                        value={setMeme.bottomText}
+                        value={meme.bottomText}
                         placeholder="Bottom of meme"
                         className="input-input"
-                        onChange={generateMeme}
+                        onChange={handleChange}
                     />
                     <button
                         onClick={generateMeme}
@@ -53,14 +61,13 @@ export default function Meme() {
                 </div>
                 <div className="meme-cont">
                     <img
-                        onChange={generateMeme}
                         className="meme-img"
                         name="randomImage"
                         value={meme.randomImage}
                         src={meme.randomImage}
                     />
-                    <h2 className="meme-text top"></h2>
-                    <h2 className="meme-text bottom"></h2>
+                    <h2 className="meme-text top">{meme.topText}</h2>
+                    <h2 className="meme-text bottom">{meme.bottomText}</h2>
                 </div>
             </form>
         </main>
